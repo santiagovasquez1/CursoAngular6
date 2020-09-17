@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "angular-HolaMundo": {
+        "angular-WishList": {
             "projectType": "application",
             "schematics": {},
             "root": "",
@@ -13,7 +13,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/angular-HolaMundo",
+                        "outputPath": "dist/angular-WishList",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -23,9 +23,10 @@
                             "src/favicon.ico",
                             "src/assets"
                         ],
-                        "styles": [
-                            "node_modules/bootstrap/dist/css/bootstrap.min.css",
-                            "styles.scss"
+                        "styles": [{
+                                "input": "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+                            },
+                            "src/styles.css"
                         ],
                         "scripts": []
                     },
@@ -60,18 +61,18 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "angular-HolaMundo:build"
+                        "browserTarget": "angular-WishList:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "angular-HolaMundo:build:production"
+                            "browserTarget": "angular-WishList:build:production"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "angular-HolaMundo:build"
+                        "browserTarget": "angular-WishList:build"
                     }
                 },
                 "test": {
@@ -108,19 +109,19 @@
                     "builder": "@angular-devkit/build-angular:protractor",
                     "options": {
                         "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "angular-HolaMundo:serve"
+                        "devServerTarget": "angular-WishList:serve"
                     },
                     "configurations": {
                         "production": {
-                            "devServerTarget": "angular-HolaMundo:serve:production"
+                            "devServerTarget": "angular-WishList:serve:production"
                         }
                     }
                 }
             }
         }
     },
-    "defaultProject": "angular-HolaMundo",
+    "defaultProject": "angular-WishList",
     "cli": {
-        "analytics": "9d96c029-04cf-45dc-8462-b4c75629b64b"
+        "analytics": false
     }
 }
