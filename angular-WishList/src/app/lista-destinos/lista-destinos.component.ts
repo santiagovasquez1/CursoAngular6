@@ -8,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaDestinosComponent implements OnInit {
 
-  destinos: string[];
+  destinos: DestinoViaje[];
 
   constructor() {
-    this.destinos = ['Buenos aires', 'Medellin', 'Bogota', 'Barcelona', 'Quito']
+    this.destinos = [];
   }
 
   ngOnInit(): void {
@@ -20,8 +20,14 @@ export class ListaDestinosComponent implements OnInit {
   guardar(nombre: string, url: string): boolean {
 
     const destino = new DestinoViaje(nombre, url);
-    console.log(destino);
+    this.destinos.push(destino);
+
+    console.log(this.destinos);
     return false;
   }
 
+  elegido(d: DestinoViaje) {
+    this.destinos.forEach((x) => { x.setSelected(false); });
+    d.setSelected(true);
+  }
 }
