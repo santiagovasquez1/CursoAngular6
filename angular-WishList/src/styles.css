@@ -118,5 +118,10 @@ a.btn-card {
     color: #fff;
 }
 
+body {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
 
 /* End card section */
