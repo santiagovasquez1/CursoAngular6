@@ -1,4 +1,5 @@
 export class DestinoViaje {
+  id: string;
   nombre: string;
   imagenUrl: string;
   public servicios: string[];
