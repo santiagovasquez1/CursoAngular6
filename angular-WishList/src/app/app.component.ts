@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
   title = 'angular-WishList';
+
   time = new Observable(observer => {
     setInterval(() => observer.next(new Date().toString()), 1000);
     return null;

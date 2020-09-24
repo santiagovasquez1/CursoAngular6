@@ -8,10 +8,6 @@ export class DestinosApiClient {
 
   // objeto observable
   current: Subject<DestinoViaje> = new BehaviorSubject<DestinoViaje>(null);
-  time = new Observable(observer => {
-    setInterval(() => observer.next(new Date().toString()), 1000);
-    return null;
-  });
 
   constructor() {
     this.destinos = [];
