@@ -1,15 +1,15 @@
-export class DestinoViaje {
-  id: string;
-  nombre: string;
-  imagenUrl: string;
-  public servicios: string[];
-  private selected: boolean;
+import {v4 as uuid} from 'uuid';
 
-  constructor(n: string, u: string) {
-    this.servicios = ['Gimnasio', 'Desayuno'];
-    this.nombre = n;
-    this.imagenUrl = u;
-  }
+export class DestinoViaje {
+  selected: boolean;
+  servicios: string[];
+  id = uuid();
+  public votes = 0;
+
+
+  constructor(public nombre: string, public imagenUrl: string) {
+    this.servicios = ['pileta', 'desayuno'];
+}
 
   isSelected(): boolean {
     return this.selected;
@@ -17,5 +17,12 @@ export class DestinoViaje {
 
   setSelected(s: boolean) {
     this.selected = s;
+  }
+
+  voteUp(): any {
+    this.votes++;
+  }
+  voteDown(): any {
+    this.votes--;
   }
 }
