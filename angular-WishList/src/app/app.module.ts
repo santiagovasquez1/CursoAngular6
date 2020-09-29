@@ -1,6 +1,7 @@
+import { AuthService } from './services/auth.service';
 import { DestinosApiClient } from './Model/DestinosApiClient';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { StoreModule as NgRxStoreModule, ActionReducerMap, Store } from '@ngrx/store';
 
@@ -14,11 +15,16 @@ import { DestinoDetalleComponent } from './Components/destino-detalle/destino-de
 import { DestinoViajeComponent } from './Components/destino-viaje/destino-viaje.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormDestinoViajeComponent } from './Components/form-destino-viaje/form-destino-viaje.component';
+import { LoginComponent } from './Components/login/login/login.component';
+import { ProtectedComponent } from './Components/protected/protected/protected.component';
+import { UsuarioLogueadoGuard } from './guards/Usuario/usuario-logueado.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: ListaDestinosComponent },
-  { path: 'destino', component: DestinoDetalleComponent },
+  { path: 'destino/:id', component: DestinoDetalleComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'protected', component: ProtectedComponent, canActivate: [UsuarioLogueadoGuard] },
 ];
 
 // redux init
@@ -42,6 +48,8 @@ const reducersInitialState = {
     ListaDestinosComponent,
     DestinoDetalleComponent,
     FormDestinoViajeComponent,
+    LoginComponent,
+    ProtectedComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +66,7 @@ const reducersInitialState = {
     EffectsModule.forRoot([DestinosViajesEffects]),
     StoreDevtoolsModule.instrument()
   ],
-  providers: [DestinosApiClient],
+  providers: [DestinosApiClient, AuthService, UsuarioLogueadoGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

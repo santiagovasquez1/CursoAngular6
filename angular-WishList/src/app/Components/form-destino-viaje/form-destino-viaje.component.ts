@@ -33,7 +33,7 @@ export class FormDestinoViajeComponent implements OnInit {
   ngOnInit(): void {
 
     // tslint:disable-next-line: no-angle-bracket-type-assertion
-    const eleNombre = <HTMLInputElement>document.getElementById('nombre');
+    const eleNombre = <HTMLInputElement> document.getElementById('nombre');
     // Subscripcion al evento input en html
     const autoComplete = fromEvent(eleNombre, 'input');
     fromEvent(eleNombre, 'input').pipe(
