@@ -1,7 +1,7 @@
-import { VoteDownAction, VoteUpAction } from './../Model/destinos-viajes-state.model';
-import { DestinoViaje } from './../Model/destino-viaje.model';
+import { VoteDownAction, VoteUpAction } from './../../Model/destinos-viajes-state.model';
+import { DestinoViaje } from './../../Model/destino-viaje.model';
 import { Component, OnInit, Input, HostBinding, EventEmitter, Output } from '@angular/core';
-import { AppState } from '../app.module';
+import { AppState } from './../../app.module';
 import { Store } from '@ngrx/store';
 
 @Component({

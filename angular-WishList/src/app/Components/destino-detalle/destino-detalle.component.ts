@@ -1,5 +1,5 @@
-import { DestinosApiClient } from './../Model/DestinosApiClient';
-import { DestinoViaje } from './../Model/destino-viaje.model';
+import { DestinosApiClient } from './../../Model/DestinosApiClient';
+import { DestinoViaje } from './../../Model/destino-viaje.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 

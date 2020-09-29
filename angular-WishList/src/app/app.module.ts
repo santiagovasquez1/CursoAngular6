@@ -6,14 +6,14 @@ import { StoreModule as NgRxStoreModule, ActionReducerMap, Store } from '@ngrx/s
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DestinoViajeComponent } from './destino-viaje/destino-viaje.component';
-import { ListaDestinosComponent } from './lista-destinos/lista-destinos.component';
-import { DestinoDetalleComponent } from './destino-detalle/destino-detalle.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FormDestinoViajeComponent } from './form-destino-viaje/form-destino-viaje.component';
 import { DestinosViajesEffects, DestinosViajesState, intializeDestinosViajesState, reducerDestinosViajes } from './Model/destinos-viajes-state.model';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ListaDestinosComponent } from './Components/lista-destinos/lista-destinos.component';
+import { DestinoDetalleComponent } from './Components/destino-detalle/destino-detalle.component';
+import { DestinoViajeComponent } from './Components/destino-viaje/destino-viaje.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormDestinoViajeComponent } from './Components/form-destino-viaje/form-destino-viaje.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
