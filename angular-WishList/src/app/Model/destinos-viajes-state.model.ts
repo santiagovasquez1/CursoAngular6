@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DestinoViaje } from './destino-viaje.model';
 import { DestinosApiClient } from './DestinosApiClient';
-import { HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
+import { HttpHeaders, HttpRequest, HttpResponse, HttpClientModule } from '@angular/common/http';
 
 // ESTADO
 export interface DestinosViajesState {
@@ -65,13 +65,13 @@ export function reducerDestinosViajes(
   action: DestinosViajesActions
 ): DestinosViajesState {
   switch (action.type) {
-    // case DestinosViajesActionTypes.INIT_MY_DATA: {
-    //   const destinos: string[] = (action as InitMyDataAction).destinos;
-    //   return {
-    //       ...state,
-    //       items: destinos.map((d) => new DestinoViaje(d, ''))
-    //     };
-    // }
+    case DestinosViajesActionTypes.INIT_MY_DATA: {
+      const destinos: string[] = (action as InitMyDataAction).destinos;
+      return {
+          ...state,
+          items: destinos.map((d) => new DestinoViaje(d, ''))
+        };
+    }
     case DestinosViajesActionTypes.NUEVO_DESTINO: {
       return {
         ...state,
