@@ -165,7 +165,10 @@ function HttpLoaderFactory(http: HttpClient) {
     TrackearClickDirective
   ],
   imports: [
-    NgxMapboxGLModule,
+    NgxMapboxGLModule.withConfig({
+      accessToken: 'TOKEN', // Optional, can also be set per map (accessToken input of mgl-map)
+      geocoderAccessToken: 'TOKEN' // Optional, specify if different from the map access token, can also be set per mgl-geocoder (accessToken input of mgl-geocoder)
+    }),
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
