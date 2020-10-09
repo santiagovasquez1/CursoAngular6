@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "~mapbox-gl/dist/mapbox-gl.css";
+@import '~@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css';
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
 /* card details start */

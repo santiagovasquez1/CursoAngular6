@@ -9,6 +9,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import Dexie from 'dexie';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -164,6 +165,7 @@ function HttpLoaderFactory(http: HttpClient) {
     TrackearClickDirective
   ],
   imports: [
+    NgxMapboxGLModule,
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
