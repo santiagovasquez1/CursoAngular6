@@ -8,6 +8,7 @@ import { StoreModule as NgRxStoreModule, ActionReducerMap, Store } from '@ngrx/s
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import Dexie from 'dexie';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +32,8 @@ import { DestinoViaje } from './Model/destino-viaje.model';
 import { Translation } from './Model/translate';
 import { Observable, from } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
+import { EspiameDirective } from './espiame.directive';
+import { TrackearClickDirective } from './trackerar-click.directive';
 
 // init routing
 export const childrenRoutesVuelos: Routes = [
@@ -110,33 +113,33 @@ class TranslationLoader implements TranslateLoader {
 
   getTranslation(lang: string): Observable<any> {
     const promise = db.translations
-                      .where('lang')
-                      .equals(lang)
-                      .toArray()
-                      .then(results => {
-                                        if (results.length === 0) {
-                                          return this.http
-                                            .get<Translation[]>(APP_CONFIG_VALUE.apiEndPoint + '/api/translation?lang=' + lang)
-                                            .toPromise()
-                                            .then(apiResults => {
-                                              db.translations.bulkAdd(apiResults);
-                                              return apiResults;
-                                            });
-                                        }
-                                        return results;
-                                      }).then((traducciones) => {
-                                        console.log('traducciones cargadas:');
-                                        console.log(traducciones);
-                                        return traducciones;
-                                      }).then((traducciones) => {
-                                        return traducciones.map((t) => ({ [t.key]: t.value}));
-                                      });
+      .where('lang')
+      .equals(lang)
+      .toArray()
+      .then(results => {
+        if (results.length === 0) {
+          return this.http
+            .get<Translation[]>(APP_CONFIG_VALUE.apiEndPoint + '/api/translation?lang=' + lang)
+            .toPromise()
+            .then(apiResults => {
+              db.translations.bulkAdd(apiResults);
+              return apiResults;
+            });
+        }
+        return results;
+      }).then((traducciones) => {
+        console.log('traducciones cargadas:');
+        console.log(traducciones);
+        return traducciones;
+      }).then((traducciones) => {
+        return traducciones.map((t) => ({ [t.key]: t.value }));
+      });
     /*
     return from(promise).pipe(
       map((traducciones) => traducciones.map((t) => { [t.key]: t.value}))
     );
     */
-   return from(promise).pipe(flatMap((elems) => from(elems)));
+    return from(promise).pipe(flatMap((elems) => from(elems)));
   }
 }
 
@@ -157,10 +160,13 @@ function HttpLoaderFactory(http: HttpClient) {
     VuelosMainComponent,
     VuelosMasInfoComponent,
     VuelosDetalleComponent,
+    EspiameDirective,
+    TrackearClickDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
@@ -176,9 +182,9 @@ function HttpLoaderFactory(http: HttpClient) {
     ReservasModule,
     TranslateModule.forRoot({
       loader: {
-          provide: TranslateLoader,
-          useFactory: (HttpLoaderFactory),
-          deps: [HttpClient]
+        provide: TranslateLoader,
+        useFactory: (HttpLoaderFactory),
+        deps: [HttpClient]
       }
     }),
   ],
